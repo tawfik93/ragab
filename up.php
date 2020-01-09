@@ -2,7 +2,7 @@
 
 session_start(); 
 
-if ($_SESSION['group_id']=='1'){?>
+if(isset($_SESSION['username']) and isset($_SESSION['position'])){?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +12,10 @@ if ($_SESSION['group_id']=='1'){?>
 <body>
 
 	<pre>
-	<form action="edit.php" method="get" id="demo">
+	<form action="uporder.php" method="POST" id="demo">
 		<div id='apper'>
-		<label>group id want edit</label>
-		<input type="number" name="group">
+		<label>date of day</label>
+		<input type="date" name="date">
 		
 		<div id='btn'>
 		<input type="submit" class="btn" name="" value="Enter" onclick="myFunction()">

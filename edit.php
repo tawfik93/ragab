@@ -9,10 +9,10 @@ include 'conn.php';
 
 
 if ($_SERVER['REQUEST_METHOD']=='GET'){
-$username2=$_GET['username'];
+$group=$_GET['group'];
  
 
-$sql = $conn->prepare("SELECT * FROM `user` WHERE username = '$username2'");
+$sql = $conn->prepare("SELECT * FROM `position` WHERE group_id = '$group'");
 $sql->execute();
 $rows = $sql->fetchAll();
 
@@ -37,26 +37,7 @@ $rows = $sql->fetchAll();
 	<pre>
 <form action="editsql.php" method="GET">
 	<div class="form-group1" border=1px>
-		<label>First Name</label>
-		<input type="text" class="form-control2" name="first_name" value="<?php foreach($rows as $row){echo $row['first name'];
-}?>">
-		<label>last Name</label>
-		<input type="text" class="form-control2" name="last_name" value="<?php foreach ($rows as $row) {
-	echo $row['last name'];
-}?>">
-	
-		<label>New UserName</label>
-		<input type="text" class="form-control2"  name="username1" value="<?php foreach ($rows as $row) {
-	echo trim($row['username']);
-}?>">
-		<label>Emile</label>
-		<input type="text" class="form-control2" name="emile" value="<?php foreach ($rows as $row) {
-	echo $row['emile'];
-}?>">
-		<label>Phone Number</label>
-		<input type="number" class="form-control2" name="phone" value="<?php foreach ($rows as $row) {
-	echo $row['phone'];
-}?>">
+		
 		<label>Position</label>
 		<input type="text" class="form-control2" name="position" value="<?php foreach ($rows as $row) {
 	echo $row['position'];
@@ -65,8 +46,8 @@ $rows = $sql->fetchAll();
 		<input type="number" class="form-control2" name="group" value="<?php foreach ($rows as $row) {
 	echo $row['group_id'];
 }?>">
-<input type="hidden"  name="username" value="<?php foreach ($rows as $row) {
-	echo trim($row['username']);
+<input type="hidden"  name="group1" value="<?php foreach ($rows as $row) {
+	echo ($row['group_id']);
 }?>">
 	
 	<input type="submit" class="btn btn-block btn-success" name="send" value="UPDATE">
@@ -94,4 +75,4 @@ padding: 10px 5px;
 margin: 0px 120px;
 </style>
 <?php
-}else header('location:index.php'); ?>
+}else header('location:../index.php'); ?>
